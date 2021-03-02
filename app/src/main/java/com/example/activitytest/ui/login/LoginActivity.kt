@@ -1,6 +1,8 @@
 package com.example.activitytest.ui.login
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -16,8 +18,9 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.example.activitytest.R
+import com.example.activitytest.SearchMusicActivity
 
-class ThirdActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
 
@@ -93,6 +96,17 @@ class ThirdActivity : AppCompatActivity() {
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
+                val prefs = getSharedPreferences("account", Context.MODE_PRIVATE)
+                val name = prefs.getString("username","not exist")
+                if(prefs.equals("not exist")){
+                    val editor = getSharedPreferences("account", Context.MODE_PRIVATE).edit()
+                    editor.putString("username", username.text.toString())
+                    editor.putString("password", password.text.toString())
+                    editor.apply()
+                }else{
+                    val intent = Intent("com.example.activitytest.SEARCH_MUSIC")
+                    startActivity(intent)
+                }
             }
         }
     }
