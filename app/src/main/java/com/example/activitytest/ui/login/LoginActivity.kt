@@ -10,15 +10,17 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
+import android.widget.CheckBox
 import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.example.activitytest.R
-import com.example.activitytest.SearchMusicActivity
+import com.example.activitytest.profile.ProfileActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -33,23 +35,31 @@ class LoginActivity : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.password)
         val login = findViewById<Button>(R.id.login)
         val loading = findViewById<ProgressBar>(R.id.loading)
+        val prefs = getSharedPreferences("account", Context.MODE_PRIVATE)
+        val rememberPassword = findViewById<CheckBox>(R.id.rememberPass)
+        val isRemember = prefs.getBoolean("remember_password", false)
+        if(isRemember){ //if the password is remembered, put the account and password to the edittext
+            username.setText(prefs.getString("account",""))
+            password.setText(prefs.getString("password", ""))
+            rememberPassword.isChecked = true
+        }
 
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
-            .get(LoginViewModel::class.java)
+                .get(LoginViewModel::class.java)
 
         loginViewModel.loginFormState.observe(this, Observer {
-                val loginState = it ?: return@Observer
+            val loginState = it ?: return@Observer
 
-                // disable login button unless both username / password is valid
-                login.isEnabled = loginState.isDataValid
+            // disable login button unless both username / password is valid
+            login.isEnabled = loginState.isDataValid
 
-                if (loginState.usernameError != null) {
-                    username.error = getString(loginState.usernameError)
-                }
-                if (loginState.passwordError != null) {
-                    password.error = getString(loginState.passwordError)
-                }
-            })
+            if (loginState.usernameError != null) {
+                username.error = getString(loginState.usernameError)
+            }
+            if (loginState.passwordError != null) {
+                password.error = getString(loginState.passwordError)
+            }
+        })
 
         loginViewModel.loginResult.observe(this, Observer {
             val loginResult = it ?: return@Observer
@@ -69,16 +79,16 @@ class LoginActivity : AppCompatActivity() {
 
         username.afterTextChanged {
             loginViewModel.loginDataChanged(
-                username.text.toString(),
-                password.text.toString()
+                    username.text.toString(),
+                    password.text.toString()
             )
         }
 
         password.apply {
             afterTextChanged {
                 loginViewModel.loginDataChanged(
-                    username.text.toString(),
-                    password.text.toString()
+                        username.text.toString(),
+                        password.text.toString()
                 )
             }
 
@@ -86,39 +96,54 @@ class LoginActivity : AppCompatActivity() {
                 when (actionId) {
                     EditorInfo.IME_ACTION_DONE ->
                         loginViewModel.login(
-                            username.text.toString(),
-                            password.text.toString()
+                                username.text.toString(),
+                                password.text.toString()
                         )
                 }
                 false
             }
 
+
+
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
-                val prefs = getSharedPreferences("account", Context.MODE_PRIVATE)
-                val name = prefs.getString("username","not exist")
-                if(prefs.equals("not exist")){
-                    val editor = getSharedPreferences("account", Context.MODE_PRIVATE).edit()
-                    editor.putString("username", username.text.toString())
-                    editor.putString("password", password.text.toString())
+
+
+                val name = prefs.getString("account",null)
+                val pw = prefs.getString("password", null) //get the password
+                val intent = Intent(applicationContext, ProfileActivity::class.java)
+
+                if(username.text.toString()==name && password.text.toString()==pw||name==null){
+                    val editor=prefs.edit()
+                    if(rememberPassword.isChecked){
+                        editor.putBoolean("remember_password", true)
+                        editor.putString("account", username.text.toString())
+                        editor.putString("password", password.text.toString())
+                    }else{
+                        editor.clear()
+                    }
                     editor.apply()
-                }else{
-                    val intent = Intent("com.example.activitytest.SEARCH_MUSIC")
                     startActivity(intent)
+                    finish()
+                }else{
+                    Toast.makeText(applicationContext,"Username or password is invalid",Toast.LENGTH_SHORT).show()
                 }
+                Log.d("tag","onCreate")
             }
         }
     }
 
+
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)
-        val displayName = model.displayName
+        val username = findViewById<EditText>(R.id.username)
+        val displayName = username.text.toString()
         // TODO : initiate successful logged in experience
         Toast.makeText(
-            applicationContext,
-            "$welcome $displayName",
-            Toast.LENGTH_LONG
+                applicationContext,
+                "$welcome $displayName",
+                Toast.LENGTH_LONG
         ).show()
     }
 
