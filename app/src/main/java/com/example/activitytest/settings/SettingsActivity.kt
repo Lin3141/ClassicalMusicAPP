@@ -7,8 +7,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.activitytest.R
+import com.example.activitytest.profile.BaseActivity
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.settings_layout)

@@ -20,9 +20,10 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.example.activitytest.R
+import com.example.activitytest.profile.BaseActivity
 import com.example.activitytest.profile.ProfileActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
 

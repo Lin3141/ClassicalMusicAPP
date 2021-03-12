@@ -1,57 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".profile.ProfileActivity">
 
-  <ImageView
-      android:id="@+id/portrait"
-      android:layout_width="179dp"
-      android:layout_height="175dp"
-      android:layout_marginTop="78dp"
-      android:layout_marginBottom="29dp"
-      android:src="@drawable/music"
-      app:layout_constraintBottom_toTopOf="@+id/favorite"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent" />
+  <Button
+      android:id="@+id/comment"
+      android:layout_width="122dp"
+      android:layout_height="40dp"
+      android:text="Comments"
+      android:layout_centerInParent="true" />
 
   <Button
       android:id="@+id/favorite"
-      android:layout_width="130dp"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="22dp"
-      android:text="Favorites"
-      app:layout_constraintBottom_toTopOf="@+id/comment"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.501"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/portrait" />
+      android:layout_width="123dp"
+      android:layout_height="38dp"
+      android:layout_above="@id/comment"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="13dp"
+      android:text="Favorites" />
 
-  <Button
-      android:id="@+id/comment"
-      android:layout_width="130dp"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="384dp"
-      android:text="Comments"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/favorite" />
+  <ImageView
+      android:id="@+id/portrait"
+      android:layout_width="127dp"
+      android:layout_height="127dp"
+      android:layout_above="@id/favorite"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="13dp"
+      android:src="@drawable/music" />
 
   <Button
       android:id="@+id/search"
-      android:layout_width="130dp"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="22dp"
-      android:text="Search"
-      app:layout_constraintBottom_toTopOf="@+id/comment"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.501"
-      app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/comment"
-      app:layout_constraintVertical_bias="0.0" />
+      android:layout_width="123dp"
+      android:layout_height="38dp"
+      android:layout_below="@+id/comment"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="13dp"
+      android:text="Search" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+  <Button
+      android:id="@+id/logout"
+      android:layout_width="123dp"
+      android:layout_height="44dp"
+      android:layout_below="@+id/search"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="13dp"
+      android:text="Log out" />
+
+</RelativeLayout>
