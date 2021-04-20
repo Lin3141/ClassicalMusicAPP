@@ -1,9 +1,10 @@
 package com.example.activitytest.profile
 
 import android.app.Activity
+import java.util.concurrent.CopyOnWriteArrayList
 
 object ActivityCollector {
-    private val activities = ArrayList<Activity>()
+    private val activities = CopyOnWriteArrayList<Activity>()
 
     fun addActivity(activity: Activity){
         activities.add(activity)

@@ -3,6 +3,7 @@ package com.example.activitytest.profile
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
+
 open class BaseActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,4 +14,5 @@ open class BaseActivity: AppCompatActivity() {
         super.onDestroy()
         ActivityCollector.removeActivity(this)
     }
+
 }

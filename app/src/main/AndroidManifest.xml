@@ -1,30 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
-package="com.example.activitytest">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.activitytest">
 
-<application
-    android:allowBackup="true"
-    android:icon="@mipmap/ic_launcher"
-    android:label="ClassicalMusicApp"
-    android:roundIcon="@mipmap/ic_launcher_round"
-    android:supportsRtl="true"
-    android:theme="@style/Theme.ActivityTest">
-    <activity android:name=".profile.CommentActivity"></activity>
-    <activity android:name=".profile.FavoriteActivity" />
-    <activity android:name=".profile.ProfileActivity" />
-    <activity android:name=".settings.SettingsActivity" />
-    <activity android:name=".SearchMusicActivity" />
-    <activity
-        android:name=".ui.login.LoginActivity"
-        android:label="Log in" />
-    <activity
-        android:name=".MainActivity"
-        android:label="Classical Music App">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-</application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="ClassicalMusicApp"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ActivityTest"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".search.SleepTimeActivity"
+            android:label="Set sleep time"/>
+        <activity
+            android:name="com.example.activitytest.search.comment.CommentActivity"
+            android:label="Comments" />
+        <activity
+            android:name=".search.MusicPlayerActivity"
+            android:label="Music player" />
+        <activity
+            android:name=".profile.MyCommentActivity"
+            android:label="My comments" />
+        <activity
+            android:name=".profile.myFavorite.FavoriteActivity"
+            android:label="My favorites" />
+        <activity
+            android:name=".profile.ProfileActivity"
+            android:label="Profile" />
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="Settings" />
+        <activity
+            android:name=".search.SearchMusicActivity"
+            android:label="Search music" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="Log in" />
+        <activity
+            android:name=".MainActivity"
+            android:label="Classical Music App">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>
-

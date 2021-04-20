@@ -1,20 +1,15 @@
 package com.example.activitytest.profile
 
-import android.app.Activity
 import android.content.Intent
-import android.graphics.BitmapFactory
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.ImageButton
 import com.example.activitytest.MainActivity
 import com.example.activitytest.R
-import com.example.activitytest.SearchMusicActivity
+import com.example.activitytest.profile.myFavorite.FavoriteActivity
+import com.example.activitytest.search.SearchMusicActivity
 import com.example.activitytest.settings.SettingsActivity
-import com.example.activitytest.ui.login.LoginActivity
 
 class ProfileActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +22,7 @@ class ProfileActivity : BaseActivity() {
         }
         val comment: Button = findViewById(R.id.comment)
         comment.setOnClickListener{
-            val intent = Intent(this, CommentActivity::class.java)
+            val intent = Intent(this, MyCommentActivity::class.java)
             startActivity(intent)
         }
         val search: Button = findViewById(R.id.search)

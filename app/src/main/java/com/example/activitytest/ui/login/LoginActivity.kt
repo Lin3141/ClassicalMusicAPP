@@ -7,7 +7,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.annotation.StringRes
-import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -40,7 +39,7 @@ class LoginActivity : BaseActivity() {
         val rememberPassword = findViewById<CheckBox>(R.id.rememberPass)
         val isRemember = prefs.getBoolean("remember_password", false)
         if(isRemember){ //if the password is remembered, put the account and password to the edittext
-            username.setText(prefs.getString("account",""))
+            username.setText(prefs.getString("username",""))
             password.setText(prefs.getString("password", ""))
             rememberPassword.isChecked = true
         }
@@ -111,7 +110,7 @@ class LoginActivity : BaseActivity() {
                 loginViewModel.login(username.text.toString(), password.text.toString())
 
 
-                val name = prefs.getString("account",null)
+                val name = prefs.getString("username",null)
                 val pw = prefs.getString("password", null) //get the password
                 val intent = Intent(applicationContext, ProfileActivity::class.java)
 
@@ -119,7 +118,7 @@ class LoginActivity : BaseActivity() {
                     val editor=prefs.edit()
                     if(rememberPassword.isChecked){
                         editor.putBoolean("remember_password", true)
-                        editor.putString("account", username.text.toString())
+                        editor.putString("username", username.text.toString())
                         editor.putString("password", password.text.toString())
                     }else{
                         editor.clear()

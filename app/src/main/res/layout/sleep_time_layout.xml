@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".search.SleepTimeActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        app:srcCompat="@drawable/goodnight" />
+
+    <EditText
+        android:id="@+id/sleepTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="set sleep time here (in minutes)"
+        android:layout_gravity="center"
+        android:inputType="time" />
+
+    <Button
+        android:id="@+id/submitTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="submit" />
+
+</LinearLayout>
+
