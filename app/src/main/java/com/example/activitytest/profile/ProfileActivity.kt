@@ -33,8 +33,8 @@ class ProfileActivity : BaseActivity() {
         val log_out: Button = findViewById(R.id.logout)
         log_out.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            ActivityCollector.finishAll()
+            ActivityCollector.finishAll() //remove all activities from the ArrayList
+            startActivity(intent) //go back to main activity
         }
     }
 

@@ -24,7 +24,8 @@ class MusicPlayerActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.music_player_layout)
 
-        val id = intent.getStringExtra("id")
+        val songId = intent.getIntExtra("songId",0)
+        val id = "https://music.163.com/song/media/outer/url?id=$songId.mp3"
         val name = intent.getStringExtra("name")
         val songName : TextView = findViewById(R.id.songName)
         songName.text = name
@@ -60,14 +61,14 @@ class MusicPlayerActivity : BaseActivity() {
                 like.text = "liked"
                 Toast.makeText(this, "You liked this track.", Toast.LENGTH_SHORT).show()
                 val values = ContentValues().apply{
-                    put("musicId", id)
+                    put("musicId", songId)
                     put("musicName", name)
                 }
                 db.insert("Favorite", null, values)
             } else {
                 like.text = "like"
                 Toast.makeText(this, "You disliked this track.", Toast.LENGTH_SHORT).show()
-                val args = arrayOf(id)
+                val args = arrayOf(songId.toString())
                 db.delete("Favorite", "musicID=?", args)
             }
         }
@@ -82,6 +83,13 @@ class MusicPlayerActivity : BaseActivity() {
         val sleepTime:Button = findViewById(R.id.sleepTime)
         sleepTime.setOnClickListener {
             val intent = Intent(this, SleepTimeActivity::class.java)
+            startActivity(intent)
+        }
+        //recommend
+        val recommend:Button = findViewById(R.id.recommend)
+        recommend.setOnClickListener {
+            val intent = Intent(this, RecommendActivity::class.java)
+            intent.putExtra("songId", songId)
             startActivity(intent)
         }
     }

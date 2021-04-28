@@ -12,33 +12,33 @@ data class Result(
 )
 
 data class SongX(
-        val album: Album,
-        val alias: List<Any>,
-        val artists: List<ArtistX>,
-        val copyrightId: Int,
-        val duration: Int,
-        val fee: Int,
-        val ftype: Int,
-        val id: Int,
-        val mark: Int,
-        val mvid: Int,
-        val name: String,
-        val rUrl: Any,
-        val rtype: Int,
-        val status: Int
+    val album: AlbumR,
+    val alias: List<Any>,
+    val artists: List<ArtistXR>,
+    val copyrightId: Int,
+    val duration: Int,
+    val fee: Int,
+    val ftype: Int,
+    val id: Int,
+    val mark: Int,
+    val mvid: Int,
+    val name: String,
+    val rUrl: Any,
+    val rtype: Int,
+    val status: Int
 )
 
 data class Album(
-        val alia: List<String>,
-        val artist: Artist,
-        val copyrightId: Int,
-        val id: Int,
-        val mark: Int,
-        val name: String,
-        val picId: Long,
-        val publishTime: Long,
-        val size: Int,
-        val status: Int
+    val alia: List<String>,
+    val artist: ArtistR,
+    val copyrightId: Int,
+    val id: Int,
+    val mark: Int,
+    val name: String,
+    val picId: Long,
+    val publishTime: Long,
+    val size: Int,
+    val status: Int
 )
 
 data class ArtistX(

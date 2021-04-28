@@ -12,11 +12,6 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_layout)
-        val button1: Button = findViewById(R.id.button1)
-        button1.setOnClickListener{
-            val intent = Intent(this, SearchMusicActivity::class.java)
-            startActivity(intent)
-        }
         val button2: Button = findViewById(R.id.button2)
         button2.setOnClickListener{
             val intent = Intent(this, LoginActivity::class.java)

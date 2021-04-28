@@ -3,6 +3,7 @@
     package="com.example.activitytest">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,20 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ActivityTest"
         android:usesCleartextTraffic="true">
-        <activity android:name=".search.SleepTimeActivity"
-            android:label="Set sleep time"/>
+        <activity android:name=".search.RecommendActivity"
+            android:label="Recommend" />
         <activity
-            android:name="com.example.activitytest.search.comment.CommentActivity"
+            android:name=".search.SleepTimeActivity"
+            android:label="Set Sleep Time" />
+        <activity
+            android:name=".search.comment.CommentActivity"
             android:label="Comments" />
         <activity
             android:name=".search.MusicPlayerActivity"
-            android:label="Music player" />
+            android:label="Music Player" />
         <activity
             android:name=".profile.MyCommentActivity"
-            android:label="My comments" />
+            android:label="My Comments" />
         <activity
             android:name=".profile.myFavorite.FavoriteActivity"
-            android:label="My favorites" />
+            android:label="My Favorites" />
         <activity
             android:name=".profile.ProfileActivity"
             android:label="Profile" />
@@ -33,10 +37,10 @@
             android:label="Settings" />
         <activity
             android:name=".search.SearchMusicActivity"
-            android:label="Search music" />
+            android:label="Search Music" />
         <activity
             android:name=".ui.login.LoginActivity"
-            android:label="Log in" />
+            android:label="Log In" />
         <activity
             android:name=".MainActivity"
             android:label="Classical Music App">

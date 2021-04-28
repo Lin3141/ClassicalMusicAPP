@@ -55,7 +55,7 @@ class SearchMusicActivity : BaseActivity() {
                 val song = songs[position]
                 val qText = song.id
                 val intent = Intent(this, MusicPlayerActivity::class.java)
-                intent.putExtra("id","https://music.163.com/song/media/outer/url?id=$qText.mp3")
+                intent.putExtra("songId",qText)
                 intent.putExtra("name", song.name)
                 startActivity(intent)
             }

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 class FavoriteDatabaseHelper(val context: Context, name: String, version: Int): SQLiteOpenHelper(context, name, null, version) {
     private val createFavorite = "create table Favorite (" +
             "id integer primary key autoincrement," +
-            "musicId text," +
+            "musicId integer," +
             "musicName text)"
 
     override fun onCreate(db: SQLiteDatabase) {

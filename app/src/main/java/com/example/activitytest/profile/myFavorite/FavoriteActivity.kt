@@ -19,7 +19,7 @@ class FavoriteActivity : BaseActivity() {
         listView.setOnItemClickListener{ _, _, position, _ ->
             val song = favoriteList[position]
             val intent = Intent(this, MusicPlayerActivity::class.java)
-            intent.putExtra("id",song.musicId)
+            intent.putExtra("songId",song.musicId)
             intent.putExtra("name", song.name)
             startActivity(intent)
         }
@@ -32,7 +32,7 @@ class FavoriteActivity : BaseActivity() {
         if(cursor.moveToFirst()){
             do{
                 val musicName = cursor.getString(cursor.getColumnIndex("musicName"))
-                val musicId = cursor.getString(cursor.getColumnIndex("musicId"))
+                val musicId = cursor.getInt(cursor.getColumnIndex("musicId"))
                 favoriteList.add(Music(musicName, musicId))
             }while(cursor.moveToNext())
         }
