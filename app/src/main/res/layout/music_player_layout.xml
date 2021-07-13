@@ -65,16 +65,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/comments"
-        android:layout_marginLeft="53dp"
+        android:layout_marginLeft="145dp"
         android:text="sleep time" />
-
-    <Button
-        android:id="@+id/recommend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/like"
-        android:layout_marginLeft="200dp"
-        android:text="recommend" />
 
 
 </RelativeLayout>

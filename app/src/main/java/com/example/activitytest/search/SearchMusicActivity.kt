@@ -28,7 +28,7 @@ class SearchMusicActivity : BaseActivity() {
                   val q:EditText = findViewById(R.id.input_message)
                   val qText = q.text
                   val request = Request.Builder()
-                          .url("http://musicapi.leanapp.cn/search?keywords=$qText")
+                          .url("https://music-api.heheda.top/search?keywords=$qText")
                           .build()
                   val response = client.newCall(request).execute()
                   val responseData = response.body?.string()
@@ -46,13 +46,13 @@ class SearchMusicActivity : BaseActivity() {
     private fun parseJSONWithGSON(responseData: String) {
         val gson=Gson()
         val song = gson.fromJson(responseData, Song::class.java)
-        val songs= song.result.songs
-        if(songs!=null) {
-            val adapter = MusicAdapter(this, R.layout.song_layout, songs)
+        val songX= song.result.songs
+        if(songX!=null) {
+            val adapter = MusicAdapter(this, R.layout.song_layout, songX)
             val listView: ListView = findViewById(R.id.searchResult)
             listView.adapter = adapter
             listView.setOnItemClickListener { _, _, position, _ ->
-                val song = songs[position]
+                val song = songX[position]
                 val qText = song.id
                 val intent = Intent(this, MusicPlayerActivity::class.java)
                 intent.putExtra("songId",qText)

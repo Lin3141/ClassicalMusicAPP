@@ -25,7 +25,7 @@ class RecommendActivity : AppCompatActivity() {
             try {
                 val client = OkHttpClient()
                 val request = Request.Builder()
-                        .url("http://musicapi.leanapp.cn/simi/song?id=$id")
+                        .url("http://192.168.110.99:3000/simi/song?id=$id")
                         .build()
                 val response = client.newCall(request).execute()
                 var responseData = response.body?.string()

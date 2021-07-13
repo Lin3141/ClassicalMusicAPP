@@ -85,13 +85,6 @@ class MusicPlayerActivity : BaseActivity() {
             val intent = Intent(this, SleepTimeActivity::class.java)
             startActivity(intent)
         }
-        //recommend
-        val recommend:Button = findViewById(R.id.recommend)
-        recommend.setOnClickListener {
-            val intent = Intent(this, RecommendActivity::class.java)
-            intent.putExtra("songId", songId)
-            startActivity(intent)
-        }
     }
 
     private val playlis = View.OnClickListener {

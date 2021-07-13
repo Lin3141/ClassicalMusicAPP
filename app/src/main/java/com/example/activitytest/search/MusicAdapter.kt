@@ -36,7 +36,7 @@ class MusicAdapter(activity: Activity, val resourceId:Int, val data: List<SongX>
             try{
                 val client = OkHttpClient()
                 val id = song?.id
-                val request = Request.Builder().url("http://musicapi.leanapp.cn/check/music?id=$id").build()
+                val request = Request.Builder().url("https://music-api.heheda.top/song/url?id=$id").build()
                val response = client.newCall(request).execute()
                 val responseData = response.body?.string()
                 if(responseData!=null){

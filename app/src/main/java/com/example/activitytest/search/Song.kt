@@ -12,9 +12,9 @@ data class Result(
 )
 
 data class SongX(
-    val album: AlbumR,
+    val album: Album,
     val alias: List<Any>,
-    val artists: List<ArtistXR>,
+    val artists: List<ArtistX>,
     val copyrightId: Int,
     val duration: Int,
     val fee: Int,
@@ -29,8 +29,7 @@ data class SongX(
 )
 
 data class Album(
-    val alia: List<String>,
-    val artist: ArtistR,
+    val artist: Artist,
     val copyrightId: Int,
     val id: Int,
     val mark: Int,

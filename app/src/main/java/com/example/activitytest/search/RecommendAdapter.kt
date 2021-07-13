@@ -33,7 +33,7 @@ class RecommendAdapter(activity: Activity, val resourceId:Int, val data: List<So
             try{
                 val client = OkHttpClient()
                 val id = song?.id
-                val request = Request.Builder().url("http://musicapi.leanapp.cn/check/music?id=$id").build()
+                val request = Request.Builder().url("http://192.168.110.99:3000/check/music?id=$id").build()
                 val response = client.newCall(request).execute()
                 val responseData = response.body?.string()
                 if(responseData!=null){
